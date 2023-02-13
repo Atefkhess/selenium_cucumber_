@@ -18,6 +18,9 @@ import io.cucumber.junit.CucumberOptions;
 		features = {"src/specs/features"},
 		plugin = {"pretty", "html:target/cucumber-report.html"},
 		tags = ("@login_CasPassant"),
+		//we are not using glue here because the class runWebSuiteTest and step_defintions 
+		//are in the same level so we don't need to add a path 
+		//glue = {},
 		monochrome = true , 
 		snippets =CAMELCASE
 		)
