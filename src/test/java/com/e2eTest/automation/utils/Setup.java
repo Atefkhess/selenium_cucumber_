@@ -9,6 +9,7 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
 
 import io.cucumber.java.Before;
+import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class Setup {
 
@@ -31,9 +32,14 @@ public class Setup {
 		}
 		switch (browser) {
 		case "chrome":
-			System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/win/chromedriver.exe");
+			/*
+			 * System.setProperty("webdriver.chrome.driver",
+			 * "src/test/resources/drivers/win/chromedriver.exe"); ChromeOptions
+			 * chromeOptions = new ChromeOptions(); driver = new ChromeDriver();
+			 */
 			ChromeOptions chromeOptions = new ChromeOptions();
-			driver = new ChromeDriver();
+			WebDriverManager.chromedriver().setup();
+			driver = new ChromeDriver(chromeOptions);
 			// Both do the same thing
 			driver.manage().window().maximize();
 			chromeOptions.addArguments("['start-maximized']");
