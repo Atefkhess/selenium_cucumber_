@@ -1,6 +1,10 @@
 package com.e2eTest.automation.step_definitions;
 
+
+import org.junit.Assert;
+
 import com.e2eTest.automation.page_objects.LoginPage;
+
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -23,8 +27,8 @@ public class LoginStepDefinition {
 	}
 
 	@When("Je saisis le email {string}")
-	public void jeSaisisLeEmail(String email) {
-		loginPage.fillEmail(email);
+	public void jeSaisisLeEmail(String mail ) {
+		loginPage.fillEmail(mail);
 	}
 
 	@And("Je saisis le password {string}")
@@ -38,8 +42,10 @@ public class LoginStepDefinition {
 	}
 
 	@Then("Je me redirige vers la page home {string}")
-	public void jeMeRedirigeVersLaPageHome(String string) {
+	public void jeMeRedirigeVersLaPageHome(String title) {
 		
+		String title_page = LoginPage.titlePage.getText();
+		Assert.assertEquals(title_page, title);
 	}
 
 }
