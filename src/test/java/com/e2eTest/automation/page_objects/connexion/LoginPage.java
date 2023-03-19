@@ -1,4 +1,4 @@
-package com.e2eTest.automation.page_objects;
+package com.e2eTest.automation.page_objects.connexion;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
@@ -15,8 +15,16 @@ import com.e2eTest.automation.utils.Setup;
 
 //public static WebElement email;
 
+
+
 public class LoginPage {
-	
+	 
+
+ //
+//	public LoginPage() {
+//        super(Setup.getDriver());
+//    }
+
 	@CacheLookup
 	@FindBy(how = How.ID, using = "Email")
 	public static WebElement email;
@@ -38,12 +46,14 @@ public class LoginPage {
 	 * pattern)
 	 */  
 	public LoginPage() {
-	        PageFactory.initElements(Setup.getDriver(),this);	
+		PageFactory.initElements(Setup.getDriver(), this);
 	}
-	/* Create method */
+	
+
+	/* Create method 
 
 	public void goToURL() {
-		Setup.getDriver().get("https://admin-demo.nopcommerce.com/login?ReturnUrl=%2Fadmin%2F");
+		Setup.getDriver().get(configFileReader.getProperties("home.url"));
 	}
 
 	public void fillEmail(String mail) {
@@ -59,5 +69,5 @@ public class LoginPage {
 	public void clickLoginbtn() {
 		btnLogin.click();
 	}
-
+	*/
 }

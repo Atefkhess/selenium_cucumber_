@@ -8,6 +8,9 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxProfile;
 
+
+
+
 import io.cucumber.java.Before;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -36,6 +39,7 @@ public class Setup {
 			ChromeOptions chromeOptions = new ChromeOptions();
 			driver = new ChromeDriver();
 			*/
+			 System.setProperty("webdriver.http.factory", "jdk-http-client");
 			ChromeOptions chromeOptions = new ChromeOptions();
 			WebDriverManager.chromedriver().setup();
 			driver = new ChromeDriver(chromeOptions);
@@ -55,7 +59,7 @@ public class Setup {
 		default:
 			throw new IllegalArgumentException("Browser\"" + browser + "\" is not supported. ");
 		}
-		//PageFactory.initElements(Setup.driver, this);
+		//PageFactory.initElements(Setup.driver,LoginPage.class);
 		//System.out.println("this:"+this);
 	}
 

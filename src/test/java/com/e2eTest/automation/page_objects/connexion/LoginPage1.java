@@ -1,4 +1,4 @@
-package com.e2eTest.automation.page_objects;
+package com.e2eTest.automation.page_objects.connexion;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
