@@ -17,7 +17,7 @@ import io.cucumber.junit.CucumberOptions;
  */
 @CucumberOptions(features = { "src/specs/features" },
 plugin = { "pretty","html:target/cucumber-report.html", "json:target/cucumber-report.json"},
-tags = ("@authentification"),
+tags = ("@customers_Form"),
 		// we are not using glue here because the class runWebSuiteTest and
 		// step_defintions
 		// are in the same level so we don't need to add a path

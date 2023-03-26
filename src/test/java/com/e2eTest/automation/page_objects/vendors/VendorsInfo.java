@@ -26,7 +26,7 @@ public class VendorsInfo {
 	public static WebElement iframeId ;
 	
 	@CacheLookup
-	@FindBy(how = How.XPATH, using = "//*[@id=\"tinymce\"]/p")
+	@FindBy(how = How.XPATH, using = "//*[@id='tinymce']/p")
 	public static WebElement description  ;
 
 	@CacheLookup

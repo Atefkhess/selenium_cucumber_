@@ -23,7 +23,8 @@ public class CustomerFormPage {
 	private By companyName = By.id("Company");
 	private By isTaxExempt = By.id("IsTaxExempt");
 	private By newsLetter = By.xpath("//div[@class='input-group-append']//input[@role='listbox']");
-	private By customerRoles = By.xpath("//*[@id=\"customer-info\"]/div[2]/div[10]/div[2]/div/div[1]/div/div/input");
+	private By customerRoles = By.xpath("//span[normalize-space()='Registered']");
+	//private By deleteBtnRole = By.xpath("//span[@class='k-icon k-i-close']");
 	private By managerOfVender = By.id("VendorId");
 	private By adminComment = By.id("AdminComment");
 	private By saveBtn = By.xpath("//button[@name='save']");
@@ -84,6 +85,11 @@ public class CustomerFormPage {
 	public WebElement getCustomerRoles() {
 		return driver.findElement(customerRoles);
 	}
+//
+//	public WebElement getDeleteBtnRole() {
+//		return driver.findElement(deleteBtnRole);
+//	}
+
 	public WebElement getManagerOfVender() {
 		return driver.findElement(managerOfVender);
 	}

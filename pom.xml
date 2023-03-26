@@ -30,6 +30,7 @@
 		<webdrivermanager.version>5.1.1</webdrivermanager.version>
 		<seleniumclient.version>4.8.1</seleniumclient.version>
 		<apachepoi.version>3.13</apachepoi.version>
+		<json.version>1.1.1</json.version>
 
 	</properties>
 	<dependencies>
@@ -60,6 +61,11 @@
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-core</artifactId>
 			<version>${log4jcore.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.googlecode.json-simple</groupId>
+			<artifactId>json-simple</artifactId>
+			<version>${json.version}</version>
 		</dependency>
 
 		<dependency>
@@ -145,10 +151,10 @@
 				<plugin>
 					<artifactId>maven-surefire-plugin</artifactId>
 					<version>2.22.1</version>
-					  <configuration>
-                   <forkCount>0</forkCount>
-                   <testFailureIgnore>true</testFailureIgnore>
-        </configuration>
+					<configuration>
+						<forkCount>0</forkCount>
+						<testFailureIgnore>true</testFailureIgnore>
+					</configuration>
 				</plugin>
 				<plugin>
 					<artifactId>maven-jar-plugin</artifactId>

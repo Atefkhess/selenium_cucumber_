@@ -1,6 +1,7 @@
 package com.e2eTest.automation.utils;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
@@ -11,6 +12,10 @@ import java.util.Properties;
 
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -116,9 +121,15 @@ public class SeleniumUtils extends BasePage {
 	 *
 	 * @param element to be clicked
 	 */
-	public void clickOnElementUsingJs(By element) {
+	public void clickOnByElementUsingJs(By element) {
 		JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
 		WebElement webElement = driver.findElement(element);
+		jsExecutor.executeScript("arguments[0].click();", webElement);
+	}
+
+	public void clickOnElementUsingJs(WebElement element) {
+		JavascriptExecutor jsExecutor = (JavascriptExecutor) driver;
+		WebElement webElement = element;
 		jsExecutor.executeScript("arguments[0].click();", webElement);
 	}
 
@@ -314,7 +325,7 @@ public class SeleniumUtils extends BasePage {
 	 * @param textToSelect
 	 * @throws InterruptedException the interrupted exception
 	 */
-	public void autoSuggest(WebElement elementWeb, String writeText, String textToSelect) throws InterruptedException {
+	public void autoSuggest(WebElement elementWeb, String writeText, String textToSelect) {
 		// start input in input field
 		elementWeb.sendKeys(writeText);
 		waitForElementToBeClickable(elementWeb);
@@ -374,7 +385,7 @@ public class SeleniumUtils extends BasePage {
 	}
 
 	/**
-	 * methode Wait for element to be clickable
+	 * method Wait for element to be clickable
 	 *
 	 * @param locator
 	 */
@@ -453,10 +464,43 @@ public class SeleniumUtils extends BasePage {
 		byte[] decoderString = Base64.getDecoder().decode(encodedStr.getBytes());
 		return (new String(decoderString));
 	}
+
+	/**
+	 * method to switch back to default window
+	 *
+	 */
 	public void SwitchToDefault() {
 		driver.switchTo().defaultContent();
-			}
-		
-		
 	}
 
+	/**
+	 *      * method to return to the parent frame.      *     
+	 */
+	public void switchToParentFrame() {
+		driver.switchTo().parentFrame();
+	}
+
+	public JSONObject JsonData(int i) {
+
+		JSONParser parser = new JSONParser();
+
+		try {
+			Object obj = parser.parse(new FileReader("./src/test/resources/configs/waitConfig.json"));
+
+			JSONArray array = (JSONArray) obj;
+			JSONObject jsonObject = (JSONObject) array.get(i);
+
+			return jsonObject;
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+			return null;
+		} catch (IOException e) {
+			e.printStackTrace();
+			return null;
+		} catch (ParseException e) {
+			e.printStackTrace();
+			return null;
+		}
+
+	}
+}
