@@ -1,25 +1,32 @@
 pipeline {
-    agent any
-tools {
-        MAVEN_HOME = tool 'Maven'
-        PATH = "${MAVEN_HOME}/bin:${PATH}"
+    agent any
+
+    tools {
+        // Install the Maven version configured as "M3" and add it to the path.
+        maven "MAVEN_HOME"
     }
-    stages {
-        stage('Build') {
-            steps {
-                // Clone your Selenium project from source control
-                git url: 'https://github.com/Atefkhess/selenium_cucumber_.git'
 
- 
+    stages {
+        stage('Build') {
+            steps {
+                // Get some code from a GitHub repository
+                git 'https://github.com/Atefkhess/selenium_cucumber_'
 
-                // Build your Selenium project using Maven or Gradle
-                sh 'mvn clean test' // or 'gradle clean test'
+                // Run Maven on a Unix agent.
+               // sh "mvn -Dmaven.test.failure.ignore=true clean package"
 
- 
+                // To run Maven on a Windows agent, use
+                 bat "mvn -Dmaven.test.failure.ignore=true clean package"
+            }
 
-                // Archive your test reports
-                junit 'AutomationQa\target\cucumber-report.json'
-            }
-        }
-    }
+            post {
+                // If Maven was able to run the tests, even if some of the test
+                // failed, record the test results and archive the jar file.
+                success {
+                    junit '/AutomationQA/target/cucumber-report.json'
+                    archiveArtifacts 'target/*.jar'
+                }
+            }
+        }
+    }
 }
