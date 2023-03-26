@@ -23,7 +23,7 @@ public class CustomerFormPage {
 	private By companyName = By.id("Company");
 	private By isTaxExempt = By.id("IsTaxExempt");
 	private By newsLetter = By.xpath("//div[@class='input-group-append']//input[@role='listbox']");
-	private By customerRoles = By.xpath("//span[normalize-space()='Registered']");
+	private By customerRoles = By.xpath("//div[@class='input-group-append input-group-required']//input[@role='listbox']");
 	//private By deleteBtnRole = By.xpath("//span[@class='k-icon k-i-close']");
 	private By managerOfVender = By.id("VendorId");
 	private By adminComment = By.id("AdminComment");

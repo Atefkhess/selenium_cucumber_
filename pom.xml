@@ -31,7 +31,6 @@
 		<seleniumclient.version>4.8.1</seleniumclient.version>
 		<apachepoi.version>3.13</apachepoi.version>
 		<json.version>1.1.1</json.version>
-
 	</properties>
 	<dependencies>
 		<dependency>
@@ -43,13 +42,15 @@
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-http-jdk-client</artifactId>
 			<version>${seleniumclient.version}</version>
-		</dependency>
+		</dependency>	
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter-api</artifactId>
 			<version>${junit.version}</version>
 			<scope>test</scope>
 		</dependency>
+		
+     
 
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
@@ -148,7 +149,7 @@
 					<artifactId>maven-compiler-plugin</artifactId>
 					<version>3.8.0</version>
 				</plugin>
-				<plugin>
+		<plugin>
 					<artifactId>maven-surefire-plugin</artifactId>
 					<version>2.22.1</version>
 					<configuration>
@@ -156,6 +157,7 @@
 						<testFailureIgnore>true</testFailureIgnore>
 					</configuration>
 				</plugin>
+				
 				<plugin>
 					<artifactId>maven-jar-plugin</artifactId>
 					<version>3.0.2</version>
