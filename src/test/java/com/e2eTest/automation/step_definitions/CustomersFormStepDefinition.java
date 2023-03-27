@@ -6,6 +6,7 @@ package com.e2eTest.automation.step_definitions;
 import com.e2eTest.automation.page_objects.customers.CustomerFormPage;
 import com.e2eTest.automation.utils.ConfigFileReader;
 import com.e2eTest.automation.utils.DateUtil;
+import com.e2eTest.automation.utils.RandomValue;
 import com.e2eTest.automation.utils.SelectFromListUtils;
 import com.e2eTest.automation.utils.SeleniumUtils;
 import com.e2eTest.automation.utils.Validations;
@@ -56,7 +57,7 @@ public class CustomersFormStepDefinition extends SeleniumUtils{
 	}
 	@When("je remplis le formulaire")
 	public void jeRemplisLeFormulaire() throws InterruptedException {
-	    super.writeText(customersFormPage.getCustomerWrappedElement(customersFormPage.getEmail()),configFileReader.getProperties("email.customer") );
+	    super.writeText(customersFormPage.getCustomerWrappedElement(customersFormPage.getEmail()),RandomValue.getSaltString()+"@gmail.com" );
 	    super.writeText(customersFormPage.getCustomerWrappedElement(customersFormPage.getPassword()),configFileReader.getProperties("password.customer") );
 	    super.writeText(customersFormPage.getCustomerWrappedElement(customersFormPage.getFirstName()),configFileReader.getProperties("firstName.cutomer") );
 	    super.writeText(customersFormPage.getCustomerWrappedElement(customersFormPage.getLastName()),configFileReader.getProperties("lastName.cutomer") );
