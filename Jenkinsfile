@@ -18,15 +18,19 @@ pipeline {
                 // To run Maven on a Windows agent, use
                  bat "mvn -Dmaven.test.failure.ignore=true clean package"
             }
-
+        }
+          stage('Rapport de test') {
+            steps {
+                // Utilisez l'étape junit pour générer le rapport de test
+                junit 'target/surefire-reports/**/*.xml'
+            }
             post {
-                // If Maven was able to run the tests, even if some of the test
-                // failed, record the test results and archive the jar file.
-                success {
-                    junit allowEmptyResults: true, testResults: '**/FirstPipelineJob/target/test-results/test-results.xml'
-                    archiveArtifacts 'target/*.jar'
+                always {
+                    // Archivez les fichiers de résultats de test pour une utilisation ultérieure
+                    archiveArtifacts artifacts: 'target/surefire-reports/**/*', allowEmptyArchive: true
                 }
             }
         }
+
     }
 }
