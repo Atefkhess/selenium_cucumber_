@@ -2,14 +2,13 @@ pipeline {
     agent any
     
     stages {
-        stage('Git') {
-            steps {
-                git branch: 'master', url: 'https://github.com/Atefkhess/selenium_cucumber_'
-            }
-        }
+        
         
         stage('Build') {
             steps {
+                // Get some code from a GitHub repository
+                git 'https://github.com/Atefkhess/selenium_cucumber_'
+         
                 sh 'mvn clean package'
             }
         }
