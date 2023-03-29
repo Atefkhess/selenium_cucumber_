@@ -20,16 +20,11 @@ pipeline {
             }
         }
           stage('Rapport de test') {
-            steps {
-                // Utilisez l'étape junit pour générer le rapport de test
-                junit 'target/surefire-reports/**/*.xml'
-            }
-            post {
-                always {
-                    // Archivez les fichiers de résultats de test pour une utilisation ultérieure
-                    archiveArtifacts artifacts: 'target/surefire-reports/**/*', allowEmptyArchive: true
-                }
-            }
+              steps {
+                  cucumber builStatus: "UNSTABLE",
+                      fileIncludePattern: "**/cucumber-report.json",
+                  jsonReportDirectory:'target'
+              }
         }
 
     }
