@@ -64,6 +64,7 @@ public class CustomersFormStepDefinition extends SeleniumUtils{
 	    super.click(customersFormPage.getCustomerWrappedElement(customersFormPage.getGenderMale()));
 	    super.writeText(customersFormPage.getCustomerWrappedElement(customersFormPage.getDateOfBirth()),configFileReader.getProperties("dateOfBirth.customer"));
 	    super.writeText(customersFormPage.getCustomerWrappedElement(customersFormPage.getCompany()),configFileReader.getProperties("companyName.customer") );
+	    super.writeText(customersFormPage.getCustomerWrappedElement(customersFormPage.getAge()),configFileReader.getProperties("age.customer") );
 	    super.click(customersFormPage.getCustomerWrappedElement(customersFormPage.getIsTaxExempt()));
 	    super.autoSuggest(customersFormPage.getCustomerWrappedElement(customersFormPage.getNewsLetter()), configFileReader.getProperties("newsletterSuggest.customer"), configFileReader.getProperties("newsletter.customer"));
 	    super.autoSuggest(customersFormPage.getCustomerWrappedElement(customersFormPage.getCustomerRoles()), configFileReader.getProperties("cutomerRoles.customer"), configFileReader.getProperties("cutomerRoles.customer"));

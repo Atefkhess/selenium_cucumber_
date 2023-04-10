@@ -15,20 +15,18 @@ import com.e2eTest.automation.utils.Setup;
 
 //public static WebElement email;
 
-
-
 public class LoginPage {
-	 
 
- //
+	//
 //	public LoginPage() {
 //        super(Setup.getDriver());
 //    }
-
+	@CacheLookup
+	@FindBy(how = How.XPATH, using = "//*[@id=\"cf-stage\"]/div[6]/label/input")
+	public static WebElement verifyHuman;
 	@CacheLookup
 	@FindBy(how = How.ID, using = "Email")
 	public static WebElement email;
-	
 
 	@CacheLookup
 	@FindBy(how = How.ID, using = "Password")
@@ -37,37 +35,29 @@ public class LoginPage {
 	@CacheLookup
 	@FindBy(how = How.XPATH, using = "//button[@type='submit']")
 	public static WebElement btnLogin;
-	
+
 	@CacheLookup
 	@FindBy(how = How.XPATH, using = "//h1[contains(text(),'Dashboard')]")
 	public static WebElement titlePage;
+
 	/*
-	 * Initialize the elements(of a given page) with Pagefactory(design
-	 * pattern)
-	 */  
+	 * Initialize the elements(of a given page) with Pagefactory(design pattern)
+	 */
 	public LoginPage() {
 		PageFactory.initElements(Setup.getDriver(), this);
 	}
-	
 
-	/* Create method 
-
-	public void goToURL() {
-		Setup.getDriver().get(configFileReader.getProperties("home.url"));
-	}
-
-	public void fillEmail(String mail) {
-		email.clear();
-		email.sendKeys(mail);
-	}
-
-	public void fillPassword(String watchword) {
-		password.clear();
-		password.sendKeys(watchword);
-	}
-
-	public void clickLoginbtn() {
-		btnLogin.click();
-	}
-	*/
+	/*
+	 * Create method
+	 * 
+	 * public void goToURL() {
+	 * Setup.getDriver().get(configFileReader.getProperties("home.url")); }
+	 * 
+	 * public void fillEmail(String mail) { email.clear(); email.sendKeys(mail); }
+	 * 
+	 * public void fillPassword(String watchword) { password.clear();
+	 * password.sendKeys(watchword); }
+	 * 
+	 * public void clickLoginbtn() { btnLogin.click(); }
+	 */
 }

@@ -32,7 +32,7 @@ public class LoginStepDefinition extends SeleniumUtils {
 	}
 
 	@When("Je saisis le email {string}")
-	public void jeSaisisLeEmail(String mail) {
+	public void jeSaisisLeEmail(String mail)  {
 		super.writeText(LoginPage.email, mail);
 	}
 

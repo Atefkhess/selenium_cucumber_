@@ -50,6 +50,15 @@ public class Setup {
 		case "firefox":
 			System.setProperty("webdriver.gecko.driver", "src/test/resource/drivers/win/geckodriver.exe");
 			FirefoxProfile profile = new FirefoxProfile();
+//		    profile.setPreference("browser.download.folderList", 1);
+//		    profile.setPreference("browser.download.manager.showWhenStarting", false);
+//		    profile.setPreference("browser.download.manager.focusWhenStarting", false);
+//		    profile.setPreference("browser.download.useDownloadDir", true);
+//		    profile.setPreference("browser.helperApps.alwaysAsk.force", false);
+//		    profile.setPreference("browser.download.manager.alertOnEXEOpen", false);
+//		    profile.setPreference("browser.download.manager.closeWhenDone", true);
+//		    profile.setPreference("browser.download.manager.showAlertOnComplete", false);
+//		    profile.setPreference("browser.download.manager.useWindow", false);
 			FirefoxOptions firefoxOptions = new FirefoxOptions();
 			firefoxOptions.setCapability("platform", Platform.WIN10);
 			firefoxOptions.setProfile(profile);

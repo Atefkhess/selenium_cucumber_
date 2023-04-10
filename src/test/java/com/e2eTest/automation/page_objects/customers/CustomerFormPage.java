@@ -21,6 +21,7 @@ public class CustomerFormPage {
 	private By genderFemale = By.id("Gender_Female");
 	private By dateOfBirth = By.id("DateOfBirth");
 	private By companyName = By.id("Company");
+	private By age = By.id("customer_attribute_1");
 	private By isTaxExempt = By.id("IsTaxExempt");
 	private By newsLetter = By.xpath("//div[@class='input-group-append']//input[@role='listbox']");
 	private By customerRoles = By.xpath("//div[@class='input-group-append input-group-required']//input[@role='listbox']");
@@ -28,7 +29,7 @@ public class CustomerFormPage {
 	private By managerOfVender = By.id("VendorId");
 	private By adminComment = By.id("AdminComment");
 	private By saveBtn = By.xpath("//button[@name='save']");
-    private By newCustomer = By.xpath("/html/body/div[3]/div[1]/div[1]");
+    private By newCustomer = By.xpath("//div[@class='alert alert-success alert-dismissable']");
 	/*
 	 * this code will locate a web element on the web page using the emailLocator
 	 * mechanism and return it as a WebElement object.
@@ -75,6 +76,10 @@ public class CustomerFormPage {
 	public WebElement getCompany() {
 		return driver.findElement(companyName);
 	}
+	public WebElement getAge() {
+		return driver.findElement(age);
+	}
+	
 	public WebElement getIsTaxExempt() {
 		return driver.findElement(isTaxExempt);
 	}
