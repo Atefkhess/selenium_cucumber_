@@ -1,4 +1,4 @@
-@customers_Form
+@nopCommerce
 Feature: Ajouter un formulaire client
   Je veux ajouter un client en remplissant le formulaire client
 

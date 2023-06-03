@@ -1,13 +1,14 @@
 package com.e2eTest.automation.page_objects.vendors;
 
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-import org.openqa.selenium.support.PageFactory;
 
+import com.e2eTest.automation.utils.BasePage;
 import com.e2eTest.automation.utils.Setup;
-public class VendorsInfo {
+
+public class VendorsInfo extends BasePage {
 	
 	@CacheLookup
 	@FindBy(how = How.XPATH, using = "//a[@href='/Admin/Vendor/List']")
@@ -46,7 +47,11 @@ public class VendorsInfo {
 	 * pattern)
 	 */  
 	public VendorsInfo() {
-		PageFactory.initElements(Setup.getDriver(), this);
+		super(Setup.getDriver());
+		/*We don't use Pagefactory directly  here anymore 
+		 * instead we call it from base page whenever U need it */
+		//PageFactory.initElements(Setup.getDriver(), this);
+		
 	}
 
 }

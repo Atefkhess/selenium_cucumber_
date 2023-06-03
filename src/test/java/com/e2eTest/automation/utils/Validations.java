@@ -37,14 +37,14 @@ public class Validations extends BasePage {
 	/** test screenshot dir. */
 	private String testScreenshotDir;
 
-	private WebDriver driver;
+	private static WebDriver driver;
 
 	/**
 	 * Instanciation de assertions.
 	 */
 	public Validations() {
-		super();
-		this.driver = Setup.getDriver();
+		super(driver);
+		Validations.driver = Setup.getDriver();
 	}
 
 	/**

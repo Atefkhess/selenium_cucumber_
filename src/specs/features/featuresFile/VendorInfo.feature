@@ -1,4 +1,4 @@
-@vendor_Info
+@nopCommerce
 Feature: Ajouter les informations des vendors
   Je veux ajouter des informations pour les vendors
 

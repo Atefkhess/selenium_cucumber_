@@ -15,8 +15,8 @@ import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
-public class CustomersFormStepDefinition extends SeleniumUtils{
-
+public class CustomersFormStepDefinition {
+	public SeleniumUtils utils;
 	public CustomerFormPage customersFormPage ;	
 	public Validations validations;
 	public SelectFromListUtils selectFromListUtils;
@@ -25,6 +25,7 @@ public class CustomersFormStepDefinition extends SeleniumUtils{
 	public CustomersFormStepDefinition() {
 		customersFormPage = new CustomerFormPage();
 		validations = new Validations();
+		utils = new SeleniumUtils();
 		dateUtil = new DateUtil();
 		selectFromListUtils = new SelectFromListUtils();
 		this.configFileReader = new ConfigFileReader();
@@ -33,7 +34,7 @@ public class CustomersFormStepDefinition extends SeleniumUtils{
 	
 	@When("je clique sur l icone Custmors")
 	public void jeCliqueSurLIconeCustmors() {
-		   super.click(customersFormPage.getCustomerWrappedElement(customersFormPage.getCustomerIcon()));
+		utils.click(customersFormPage.getCustomerWrappedElement(customersFormPage.getCustomerIcon()));
 
 	}
 	
@@ -43,13 +44,13 @@ public class CustomersFormStepDefinition extends SeleniumUtils{
 	}
 	@When("Je clique sur le bouton customers")
 	public void jeCliqueSurLeBoutonCustomers() {
-	   super.click(customersFormPage.getCustomerWrappedElement(customersFormPage.getCustomerBtn()));
+		utils.click(customersFormPage.getCustomerWrappedElement(customersFormPage.getCustomerBtn()));
 	}
 	
 	
 	@And("je clique sur le boutton Add New")
 	public void jeCliqueSurLeBouttonAddNew() {
-		super.click(customersFormPage.getCustomerWrappedElement(customersFormPage.getAddNewBtn()));
+		utils.click(customersFormPage.getCustomerWrappedElement(customersFormPage.getAddNewBtn()));
 	}
 	@Then("un formulaire pour ajouter un client s affiche")
 	public void unFormulairePourAjouterUnClientSAffiche() {
@@ -57,24 +58,24 @@ public class CustomersFormStepDefinition extends SeleniumUtils{
 	}
 	@When("je remplis le formulaire")
 	public void jeRemplisLeFormulaire() throws InterruptedException {
-	    super.writeText(customersFormPage.getCustomerWrappedElement(customersFormPage.getEmail()),RandomValue.getSaltString()+"@gmail.com" );
-	    super.writeText(customersFormPage.getCustomerWrappedElement(customersFormPage.getPassword()),configFileReader.getProperties("password.customer") );
-	    super.writeText(customersFormPage.getCustomerWrappedElement(customersFormPage.getFirstName()),configFileReader.getProperties("firstName.cutomer") );
-	    super.writeText(customersFormPage.getCustomerWrappedElement(customersFormPage.getLastName()),configFileReader.getProperties("lastName.cutomer") );
-	    super.click(customersFormPage.getCustomerWrappedElement(customersFormPage.getGenderMale()));
-	    super.writeText(customersFormPage.getCustomerWrappedElement(customersFormPage.getDateOfBirth()),configFileReader.getProperties("dateOfBirth.customer"));
-	    super.writeText(customersFormPage.getCustomerWrappedElement(customersFormPage.getCompany()),configFileReader.getProperties("companyName.customer") );
-//	    super.writeText(customersFormPage.getCustomerWrappedElement(customersFormPage.getAge()),configFileReader.getProperties("age.customer") );
-	    super.click(customersFormPage.getCustomerWrappedElement(customersFormPage.getIsTaxExempt()));
-	    super.autoSuggest(customersFormPage.getCustomerWrappedElement(customersFormPage.getNewsLetter()), configFileReader.getProperties("newsletterSuggest.customer"), configFileReader.getProperties("newsletter.customer"));
-	    super.autoSuggest(customersFormPage.getCustomerWrappedElement(customersFormPage.getCustomerRoles()), configFileReader.getProperties("cutomerRoles.customer"), configFileReader.getProperties("cutomerRoles.customer"));
+		utils.writeText(customersFormPage.getCustomerWrappedElement(customersFormPage.getEmail()),RandomValue.getSaltString()+"@gmail.com" );
+		utils.writeText(customersFormPage.getCustomerWrappedElement(customersFormPage.getPassword()),configFileReader.getProperties("password.customer") );
+		utils.writeText(customersFormPage.getCustomerWrappedElement(customersFormPage.getFirstName()),configFileReader.getProperties("firstName.cutomer") );
+		utils.writeText(customersFormPage.getCustomerWrappedElement(customersFormPage.getLastName()),configFileReader.getProperties("lastName.cutomer") );
+		utils.click(customersFormPage.getCustomerWrappedElement(customersFormPage.getGenderMale()));
+		utils.writeText(customersFormPage.getCustomerWrappedElement(customersFormPage.getDateOfBirth()),configFileReader.getProperties("dateOfBirth.customer"));
+		utils.writeText(customersFormPage.getCustomerWrappedElement(customersFormPage.getCompany()),configFileReader.getProperties("companyName.customer") );
+//	    utils.writeText(customersFormPage.getCustomerWrappedElement(customersFormPage.getAge()),configFileReader.getProperties("age.customer") );
+		utils.click(customersFormPage.getCustomerWrappedElement(customersFormPage.getIsTaxExempt()));
+		utils.autoSuggest(customersFormPage.getCustomerWrappedElement(customersFormPage.getNewsLetter()), configFileReader.getProperties("newsletterSuggest.customer"), configFileReader.getProperties("newsletter.customer"));
+		utils.autoSuggest(customersFormPage.getCustomerWrappedElement(customersFormPage.getCustomerRoles()), configFileReader.getProperties("cutomerRoles.customer"), configFileReader.getProperties("cutomerRoles.customer"));
 	    selectFromListUtils.selectDropDownListByVisibleText(customersFormPage.getCustomerWrappedElement(customersFormPage.getManagerOfVender()), configFileReader.getProperties("manageOfVendor.customer"));
 
-	    super.writeText(customersFormPage.getCustomerWrappedElement(customersFormPage.getAdminComment()),configFileReader.getProperties("adminComment.customer"));	
+	    utils.writeText(customersFormPage.getCustomerWrappedElement(customersFormPage.getAdminComment()),configFileReader.getProperties("adminComment.customer"));	
 	}
 	@When("je clique sur save")
 	public void jeCliqueSurSave() {
-	    super.click(customersFormPage.getCustomerWrappedElement(customersFormPage.getSaveBtn()));
+		utils.click(customersFormPage.getCustomerWrappedElement(customersFormPage.getSaveBtn()));
 	}
 	@Then("un nouveau client s ajoute {string}")
 	public void unNouveauClientSAjoute(String title) {

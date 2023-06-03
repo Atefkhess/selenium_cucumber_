@@ -22,7 +22,8 @@ public class TearDown {
 			scenario.attach(screenshot, "image/png", "screenshot");
 
 		}
-		//Setup.getDriver().quit();
+		Setup.getDriver().quit();
+		Setup.getLogger().error("scenario :"+ scenario.getName() +"-finished.status"+ scenario.getStatus());
 	}
 
 }

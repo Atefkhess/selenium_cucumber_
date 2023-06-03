@@ -15,9 +15,8 @@ import io.cucumber.junit.CucumberOptions;
  * The @CucumberOptions Annotation is used to define the location of feature
  * files, step definitions, reporting integration.
  */
-@CucumberOptions(features = { "src/specs/features" },
-plugin = { "pretty","html:target/cucumber-report.html", "json:target/cucumber-report.json"},
-tags = ("@customers_Form"),
+@CucumberOptions(features = { "src/specs/features" }, plugin = { "pretty", "html:target/cucumber-report.html",
+		"json:target/cucumber-report.json" }, tags = ("@nopCommerce"),
 		// we are not using glue here because the class runWebSuiteTest and
 		// step_defintions
 		// are in the same level so we don't need to add a path
@@ -31,4 +30,6 @@ tags = ("@customers_Form"),
  */
 public class RunWebSuiteTest {
 
-}
+
+	}
+

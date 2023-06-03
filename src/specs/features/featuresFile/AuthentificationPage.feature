@@ -1,4 +1,4 @@
-@authentification
+@nopCommerce
 Feature: Je souhaite verifier la page login de l application nopcommerce
   En tant qu utilisateur je souhaite me connecter
 

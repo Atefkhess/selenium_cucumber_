@@ -42,7 +42,7 @@ public class Wait {
 	}
 
 	/**
-	 * methode For loading.
+	 * method For loading.
 	 *
 	 * @param timeout
 	 */
@@ -54,7 +54,7 @@ public class Wait {
 	}
 
 	/**
-	 * methode For element to be displayed.
+	 * method For element to be displayed.
 	 *
 	 * @param timeout
 	 * @param webElement
@@ -67,7 +67,7 @@ public class Wait {
 	}
 
 	/**
-	 * methode For presence of elements.
+	 * method For presence of elements.
 	 *
 	 * @param timeout
 	 * @param elementLocator
@@ -81,7 +81,7 @@ public class Wait {
 	}
 
 	/**
-	 * methode Wait until clickable.
+	 * method Wait until clickable.
 	 *
 	 * @param driver
 	 * @param by

@@ -4,14 +4,22 @@ import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.List;
 import java.util.TimeZone;
+
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+/** driver. */
 
 public class DateUtil extends BasePage {
+	private static WebDriver driver;
+	public DateUtil() {
+		super(driver);
 	
+	}
+
 	// Get The Current Day
 	public static String getCurrentDay() {
 		// Create a Calendar Object

@@ -4,8 +4,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-import org.openqa.selenium.support.PageFactory;
 
+import com.e2eTest.automation.utils.BasePage;
 import com.e2eTest.automation.utils.Setup;
 
 /* Retrieve Element */
@@ -15,7 +15,7 @@ import com.e2eTest.automation.utils.Setup;
 
 //public static WebElement email;
 
-public class LoginPage {
+public class LoginPage extends BasePage {
 
 	//
 //	public LoginPage() {
@@ -44,7 +44,10 @@ public class LoginPage {
 	 * Initialize the elements(of a given page) with Pagefactory(design pattern)
 	 */
 	public LoginPage() {
-		PageFactory.initElements(Setup.getDriver(), this);
+		super(Setup.getDriver());
+		/*We don't use Pagefactory directly  here anymore 
+		 * instead we call it from base page whenever U need it */
+		//PageFactory.initElements(Setup.getDriver(), this);
 	}
 
 	/*

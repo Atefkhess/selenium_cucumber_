@@ -43,14 +43,14 @@ public class SeleniumUtils extends BasePage {
 	protected FileInputStream configFis;
 
 	/** driver. */
-	private WebDriver driver;
+	private static WebDriver driver;
 
 	/**
 	 * Instanciation de common utils.
 	 */
 	public SeleniumUtils() {
-		super();
-		this.driver = Setup.getDriver();
+		super(driver);
+		SeleniumUtils.driver = Setup.getDriver();
 	}
 
 	/**
