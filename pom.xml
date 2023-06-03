@@ -158,10 +158,10 @@
 				</plugin>
 		<plugin>
 					<artifactId>maven-surefire-plugin</artifactId>
-					<version>3.0.0-M8</version>
+					<version>2.22.1</version>
 					<configuration>
-                <skip>true</skip>
-            </configuration>
+						<forkCount>0</forkCount>
+					</configuration>
 				</plugin>
 				
 				<plugin>
@@ -185,32 +185,7 @@
 					<artifactId>maven-project-info-reports-plugin</artifactId>
 					<version>3.0.0</version>
 				</plugin>
-				 <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-failsafe-plugin</artifactId>
-                <version>${maven.failsafe.version}</version>
-                <executions>
-                    <execution>
-                    <goals>
-                    <goal>integration-test</goal>
-                    </goals>
-                    <configuration>
-
-                            <includes>
-                                <!-- UNCOMMENT BELOW LINE - To execute feature files with single runner -->
-                                <include>**/*RunWebSuiteTest.java</include>
-                            </includes>
-                            <!-- UNCOMMENT BELOW 3 LINES - To execute using parallel or combination option -->
-                            <parallel>methods</parallel>
-                            <threadCount>4</threadCount>
-                            <perCoreThreadCount>true</perCoreThreadCount>
-                   
-                   
-                    </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
+			</plugins>
 		</pluginManagement>
 	</build>
 </project>
