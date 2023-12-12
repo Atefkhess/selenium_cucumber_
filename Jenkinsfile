@@ -2,34 +2,30 @@ pipeline {
     agent any
 
     tools {
+        // Install the Maven version configured as "M3" and add it to the path.
         maven "MAVEN_HOME"
     }
 
     stages {
         stage('Build') {
             steps {
+                // Get some code from a GitHub repository
                 git 'https://github.com/Atefkhess/selenium_cucumber_'
+
+                // Run Maven on a Unix agent.
+               // sh "mvn -Dmaven.test.failure.ignore=true clean package"
+
+                // To run Maven on a Windows agent, use
+                 bat "mvn -Dmaven.test.failure.ignore=true clean package"
             }
         }
-        
-        stage('Rapport de test') {
-            steps {
-                cucumber buildStatus: "UNSTABLE",
-                         fileIncludePattern: "**/cucumber-report.json",
-                         jsonReportDirectory:'target'
-            }
+          stage('Rapport de test') {
+              steps {
+                  cucumber buildStatus: "UNSTABLE",
+                      fileIncludePattern: "**/cucumber-report.json",
+                  jsonReportDirectory:'target'
+              }
         }
-    }
-    
-    post {
-        always {
-            script {
-                def buildStatus = currentBuild.result ?: 'UNKNOWN'
-                emailext subject: 'Jenkins Build Notification',
-                          body: "Hello,\n\nThe Jenkins build for NopCommerce has completed.\n\nBuild Status: ${buildStatus}\nBuild Number: ${BUILD_NUMBER}\nBuild URL: ${BUILD_URL}\n\nYou can view the console output and details on the Jenkins dashboard.\n\nThank you,\nAtef Khessib",
-                          to: 'khessibatef@gmail.com',
-                          from: 'jenkins@gmail.com'   
-            }
-        }
+
     }
 }
