@@ -23,10 +23,13 @@ pipeline {
     
     post {
         always {
-            emailext subject: 'Jenkins Build Notification',
-                      body: "Hello,\n\nThe Jenkins build for NopCommerce has completed.\n\nBuild Status: $BUILD_STATUS\nBuild Number: $BUILD_NUMBER\nBuild URL: $BUILD_URL\n\nYou can view the console output and details on the Jenkins dashboard.\n\nThank you,\nAtef Khessib",
-                      to: 'khessibatef@gmail.com',
-                      from: 'jenkins@gmail.com'  
+            script {
+                def buildStatus = currentBuild.result ?: 'UNKNOWN'
+                emailext subject: 'Jenkins Build Notification',
+                          body: "Hello,\n\nThe Jenkins build for NopCommerce has completed.\n\nBuild Status: ${buildStatus}\nBuild Number: ${BUILD_NUMBER}\nBuild URL: ${BUILD_URL}\n\nYou can view the console output and details on the Jenkins dashboard.\n\nThank you,\nAtef Khessib",
+                          to: 'khessibatef@gmail.com',
+                          from: 'jenkins@gmail.com'   
+            }
         }
     }
 }
