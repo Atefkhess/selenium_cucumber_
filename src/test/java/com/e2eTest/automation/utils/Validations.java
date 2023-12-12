@@ -107,12 +107,12 @@ public class Validations extends BasePage {
 				+ new SimpleDateFormat("MM-dd-yyyy-HH-mm-ss", Locale.FRANCE).format(new GregorianCalendar().getTime())
 				+ ".png";
 
-		log.info(screenshotPath);
+		LOGGER.info(screenshotPath);
 		File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 		try {
 			FileUtils.copyFile(scrFile, new File(testScreenshotDir + screenshotPath));
 		} catch (IOException e) {
-			log.info("Exception: ", e);
+			LOGGER.info("Exception: ", e);
 			screenshotPath = "";
 		}
 		return screenshotPath;
@@ -145,7 +145,7 @@ public class Validations extends BasePage {
 		cosDoc.close();
 		pdDoc.close();
 
-		log.info("Text Found on the pdf File...");
+		LOGGER.info("Text Found on the pdf File...");
 		return exist;
 
 	}
@@ -193,7 +193,7 @@ public class Validations extends BasePage {
 		String text = inputText.getAttribute("value");
 
 		if (text.isEmpty()) {
-			log.info("input box is empty");
+			LOGGER.info("input box is empty");
 		}
 	}
 

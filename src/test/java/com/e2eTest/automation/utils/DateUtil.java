@@ -26,10 +26,10 @@ public class DateUtil extends BasePage {
 		Calendar calendar = Calendar.getInstance(TimeZone.getDefault());
 		// Get Current Day as a number
 		int todayInt = calendar.get(Calendar.DAY_OF_MONTH);
-		log.info("Today Int: " + todayInt + "\n");
+		LOGGER.info("Today Int: " + todayInt + "\n");
 		// Integer to String Conversion
 		String todayStr = Integer.toString(todayInt);
-		log.info("Today Str: " + todayStr + "\n");
+		LOGGER.info("Today Str: " + todayStr + "\n");
 		return todayStr;
 	}
 
@@ -58,7 +58,7 @@ public class DateUtil extends BasePage {
 		String date1 = dateFormat.format(date).trim();
 
 		// Print the Date
-		log.info(date1);
+		LOGGER.info(date1);
 		return date1;
 	}
 

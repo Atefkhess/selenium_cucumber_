@@ -1,5 +1,7 @@
 package com.e2eTest.automation.utils;
 
+import java.net.MalformedURLException;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.Platform;
@@ -15,10 +17,13 @@ import io.cucumber.java.Scenario;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class Setup {
+	
 
-    private static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
-    private static final Logger LOGGER = LogManager.getLogger(Setup.class.getName());
+    
+	protected static Logger LOGGER = LogManager.getLogger(BasePage.class.getName());
+	private static ThreadLocal<WebDriver> driver = new ThreadLocal<>();
 
+    
     /**
      * This method is used to open the browser. This method is called before the
      * invocation of each test method in the given class. In this method, we need to
@@ -30,7 +35,7 @@ public class Setup {
     @Before // Hooks Of Cucumber
     
     public void setWebDriver(Scenario scenario) {
-        LOGGER.error("scenario :" + scenario.getName() + "-started");
+        LOGGER.info("scenario :" + scenario.getName() + "-started");
         String browser = System.getProperty("browser");
         if (browser == null) {
             browser = "chrome";
@@ -70,7 +75,4 @@ public class Setup {
         return driver.get();
     }
 
-    public static Logger getLogger() {
-        return LOGGER;
-    }
 }

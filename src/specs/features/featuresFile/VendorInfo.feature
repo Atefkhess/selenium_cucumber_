@@ -14,7 +14,7 @@ Feature: Ajouter les informations des vendors
   Scenario: Je remplis les informations des vendors de l application nopommerce
     Given Je clique sur le bouton Vendors
     When Je clique sur le bouton Add new
-    Then le formulaire Vendor info s affiche
+    Then le formulaire Vendor info s affiche "Add a new vendor"
     When Je remplis le formulaire Vendor info
     And Je clique sur le bouton Save
     Then Un message d ajout s affiche

@@ -20,7 +20,7 @@ public class LoginPage1 {
 	private By btnLogin = By.xpath("//button[@type='submit']");
 
 	
-/*this code will locate a web element on the web page
+/*Getter :this code will locate a web element on the web page
  *  using the emailLocator mechanism and return it
  *   as a WebElement object.
  */

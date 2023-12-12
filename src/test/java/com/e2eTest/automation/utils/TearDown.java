@@ -19,11 +19,12 @@ public class TearDown {
 
 		if (scenario.isFailed()) {
 			final byte[] screenshot = ((TakesScreenshot) Setup.getDriver()).getScreenshotAs(OutputType.BYTES);
-			scenario.attach(screenshot, "image/png", "screenshot");
+			scenario.attach(screenshot, "image/png", "screenshots");
+			
 
 		}
 		Setup.getDriver().quit();
-		Setup.getLogger().error("scenario :"+ scenario.getName() +"-finished.status"+ scenario.getStatus());
+		Setup.LOGGER.info("scenario :"+ scenario.getName() +"-finished.status "+ scenario.getStatus());
 	}
 
 }

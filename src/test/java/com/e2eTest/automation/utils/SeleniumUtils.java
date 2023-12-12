@@ -163,9 +163,9 @@ public class SeleniumUtils extends BasePage {
 		try {
 			return Setup.getDriver().findElement(locator);
 		} catch (NoSuchElementException e) {
-			log.error(this.getClass().getName(), "findElement", "Element not found " + locator);
+			LOGGER.error(this.getClass().getName(), "findElement", "Element not found " + locator);
 			String message = e.getMessage();
-			log.warn(message);
+			LOGGER.warn(message);
 			throw new NoSuchElementException(message);
 		}
 	}
@@ -181,7 +181,7 @@ public class SeleniumUtils extends BasePage {
 		try {
 			return Setup.getDriver().findElements(locator);
 		} catch (NoSuchElementException e) {
-			log.error(this.getClass().getName(), "findElements", "element not found" + locator);
+			LOGGER.error(this.getClass().getName(), "findElements", "element not found" + locator);
 			throw new NoSuchElementException(e.getMessage());
 		}
 	}
@@ -232,7 +232,7 @@ public class SeleniumUtils extends BasePage {
 		try {
 			element.clear();
 		} catch (Exception e) {
-			log.info(String.format("The following element could not be cleared: [%s]", element.getText()));
+			LOGGER.info(String.format("The following element could not be cleared: [%s]", element.getText()));
 		}
 	}
 
@@ -264,7 +264,7 @@ public class SeleniumUtils extends BasePage {
 			waitForElementToBeClickable(locator);
 			element.click();
 		} catch (NoSuchElementException e) {
-			log.info("No Element Found to enter text", e);
+			LOGGER.info("No Element Found to enter text", e);
 		}
 	}
 
@@ -283,7 +283,7 @@ public class SeleniumUtils extends BasePage {
 			clearField(element);
 			element.sendKeys(text);
 		} catch (NoSuchElementException e) {
-			log.info("No Element Found to enter text", e);
+			LOGGER.info("No Element Found to enter text", e);
 		}
 	}
 
@@ -432,16 +432,16 @@ public class SeleniumUtils extends BasePage {
 			List<WebElement> optionsToSelect = autoOptions.findElements(locator);
 			for (WebElement option : optionsToSelect) {
 				if (option.getText().equals(textToSelect)) {
-					log.info("Trying to select: " + textToSelect);
+					LOGGER.info("Trying to select: " + textToSelect);
 					option.click();
 					break;
 				}
 			}
 
 		} catch (NoSuchElementException e) {
-			log.info(e.getStackTrace());
+			LOGGER.info(e.getStackTrace());
 		} catch (Exception e) {
-			log.info(e.getStackTrace());
+			LOGGER.info(e.getStackTrace());
 		}
 	}
 

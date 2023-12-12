@@ -24,7 +24,7 @@ public class VendorInfoStepDefinition  {
 	public Validations validations;
 	private static SeleniumUtils seleniumUtils = new SeleniumUtils();
 	static JSONObject object = seleniumUtils.JsonData(0);
-	private static long mediumWait = Long.valueOf((String) object.get("MediumWait"));
+	private static long highWait = Long.valueOf((String) object.get("HighWait"));
 
 	public VendorInfoStepDefinition() {
 
@@ -48,15 +48,15 @@ public class VendorInfoStepDefinition  {
 		seleniumUtils.click(vendorsInfoBy.getVendorsWrappedElement(vendorsInfoBy.getAddNewBtn()));
 	}
 
-	@Then("le formulaire Vendor info s affiche")
-	public void leFormulaireVendorInfoSAffiche() {
-
+	@Then("le formulaire Vendor info s affiche {string}")
+	public void leFormulaireVendorInfoSAffiche(String form) {
+     validations.assertTrue(vendorsInfoBy.getVendorsWrappedElement(vendorsInfoBy.getFormPage()), form);
 	}
 
 	@When("Je remplis le formulaire Vendor info")
 	public void jeRemplisLeFormulaireVendorInfo() throws InterruptedException {
 		seleniumUtils.writeText(vendorsInfoBy.getName(), configFileReader.getProperties("name.vendor"));
-		Thread.sleep(mediumWait);
+		Thread.sleep(highWait);
 		wait.forElementToBeDisplayed(Duration.ofSeconds(10),vendorsInfoBy.getVendorsWrappedElement(vendorsInfoBy.getIframeId()),configFileReader.getProperties("iframeId"));
 
 		seleniumUtils.switchToNewWindow(Setup.getDriver(), configFileReader.getProperties("iframeId"));

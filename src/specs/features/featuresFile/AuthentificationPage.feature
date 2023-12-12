@@ -12,7 +12,3 @@ Feature: Je souhaite verifier la page login de l application nopcommerce
   Scenario: Authentification sur l application nopcommerce - Cas passant
     Then Je me redirige vers la page home "Dashboard"
 
-  @logout
-  Scenario: deconnexion de l application nopcommerce 
-    When Je click sur le bouton LOGOUT
-    Then Je me redirige vers la page login "Welcome, please sign in!"

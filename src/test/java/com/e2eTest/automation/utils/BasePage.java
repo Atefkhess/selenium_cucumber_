@@ -11,7 +11,7 @@ import org.openqa.selenium.support.PageFactory;
  */
 public class BasePage {
 	/** log. */
-	protected static Logger log = LogManager.getLogger();
+	protected static Logger LOGGER = LogManager.getLogger(BasePage.class.getName());
 	protected WebDriver driver;
 
 	/**

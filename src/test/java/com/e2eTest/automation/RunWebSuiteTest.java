@@ -1,7 +1,9 @@
 package com.e2eTest.automation;
 
-import org.junit.runner.RunWith;
 import static io.cucumber.junit.CucumberOptions.SnippetType.CAMELCASE;
+
+import org.junit.runner.RunWith;
+
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 
@@ -16,7 +18,7 @@ import io.cucumber.junit.CucumberOptions;
  * files, step definitions, reporting integration.
  */
 @CucumberOptions(features = { "src/specs/features" }, plugin = { "pretty", "html:target/cucumber-report.html",
-		"json:target/cucumber-report.json" }, tags = ("@nopCommerce"),
+		"json:target/cucumber-report.json","com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:" }, tags = ("@nopCommerce"),
 		// we are not using glue here because the class runWebSuiteTest and
 		// step_defintions
 		// are in the same level so we don't need to add a path
@@ -30,6 +32,8 @@ import io.cucumber.junit.CucumberOptions;
  */
 public class RunWebSuiteTest {
 
-
+ 
 	}
+
+	
 
